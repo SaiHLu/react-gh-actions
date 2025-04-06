@@ -2,13 +2,18 @@ name: Setup Node.js and Install Dependencies
 description: |
   This action sets up Node.js and installs dependencies using npm.
   It caches the node_modules directory to speed up subsequent runs.
+inputs:
+  node-version:
+    description: 'Node.js version to use'
+    required: false
+    default: '22'
 runs:
   using: composite
   steps:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: "22"
+        node-version: ${{ inputs.node-version }}
 
     - name: Cache dependencies
       uses: actions/cache@v4
