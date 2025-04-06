@@ -1,0 +1,10 @@
+name: Hello World
+on: push
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome
+        run: echo "Hello, world!"
+      - name: Bye
+        run: echo "Bye, world!"
