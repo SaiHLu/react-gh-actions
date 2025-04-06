@@ -22,6 +22,7 @@ jobs:
 
   Build:
     # This job depends on the Test job. It will only run if the Test job is successful.
+    # E.g. needs: Test or needs: [Test, AnotherJob]
     needs: Test # "Test" is the job name
     runs-on: ubuntu-latest
     steps:
@@ -38,3 +39,10 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+  Deploy:
+    runs-on: ubuntu-latest
+    needs: Build # "Build" is the job name
+    steps:
+      - name: Deploy Artifacts
+        run: echo "Deploying artifacts..."
