@@ -1,6 +1,7 @@
 name: Deploy
 on:
   workflow_dispatch:
+# By default, jobs run in parallel. To run them sequentially, you can use the `needs` keyword.
 jobs:
   Test:
     runs-on: ubuntu-latest
@@ -20,6 +21,8 @@ jobs:
         run: npm test
 
   Build:
+    # This job depends on the Test job. It will only run if the Test job is successful.
+    needs: Test # "Test" is the job name
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
